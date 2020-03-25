@@ -1,0 +1,7 @@
+<!-- index.wxml -->
+<view class="list">
+  <view class="item kelong" wx:if="{{!showkelong}}" style="background:rgb{{kelong.color}};top:{{kelong.top}}px;">内容{{kelong.index}}
+  </view>
+  <view class="item" wx:for="{{list}}" catchtouchmove="touchmove" data-index="{{index}}" catchtouchend="touchchend"  style="background:rgb{{item.color}};" >内容{{item.index}}
+  </view>
+</view>
