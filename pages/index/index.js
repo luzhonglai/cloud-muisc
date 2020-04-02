@@ -3,6 +3,9 @@
 const app = getApp();
 
 Page({
+  options: {
+    name: 222
+  },
   data: {
     motto: "Hello World",
     userInfo: {},
@@ -15,9 +18,29 @@ Page({
       index: ""
     },
     itemH: Number,
-    showkelong: true
+    showkelong: true,
+    active: 0,
+    tabber: [
+      {
+        title: "首页",
+        icon: "home-o"
+      },
+      {
+        title: "分类",
+        icon: "search"
+      },
+      {
+        title: "推荐",
+        icon: "friends-o"
+      },
+      {
+        title: "我的",
+        icon: "setting-o"
+      }
+    ]
   },
   onLoad() {
+    this.setBarTitle();
     const query = wx.createSelectorQuery();
     // 页面初始化获取item节点高度
     query
@@ -27,10 +50,16 @@ Page({
       })
       .exec();
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: "../logs/logs"
+  setBarTitle(i) {
+    const title = this.data.tabber[i || 0].title;
+    wx.setNavigationBarTitle({
+      title
+    });
+  },
+  onChange(event) {
+    this.setBarTitle(event.detail);
+    this.setData({
+      active: event.detail
     });
   },
   onHide() {

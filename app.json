@@ -3,28 +3,17 @@
     "pages/index/index",
     "pages/logs/logs"
   ],
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+  },
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#008B8B",
     "navigationBarTitleText": "dome",
     "navigationBarTextStyle": "black"
   },
-  "tabBar":{
-    "list":[
-      {
-        "pagePath":"pages/index/index",
-        "text":"编辑",
-        "iconPath":"image/icon1.png",
-        "selectedIconPath":"image/icon2.png"
-      },
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "展示",
-        "iconPath": "image/icon3.png",
-        "selectedIconPath": "image/icon4.png"
-      }
-    ]
-  },
+  
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

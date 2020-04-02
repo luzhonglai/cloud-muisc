@@ -1,0 +1,23 @@
+{
+  "name": "webapp-dome",
+  "version": "1.0.0",
+  "description": "小程序dome",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhonglai1996/webapp-dome.git"
+  },
+  "author": "Zhonglai lu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhonglai1996/webapp-dome/issues"
+  },
+  "homepage": "https://github.com/zhonglai1996/webapp-dome#readme"
+}
