@@ -1,14 +1,6 @@
 <!-- index.wxml -->
-<view class="list">
-  <view bindtap="addItem" class="item">添加内容</view>
-  <view class="item kelong" wx:if="{{!showkelong}}" style="background:rgb{{kelong.color}};top:{{kelong.top}}px;">
-    内容{{kelong.index}}
-  </view>
-  <view class="item" wx:for="{{list}}" catchtouchmove="touchmove" data-index="{{index}}" catchtouchend="touchchend" style="background:rgb{{item.color}};">
-    内容{{item.index}}
-  </view>
-</view>
-{{name}}
+<van-notice-bar left-icon="https://img.yzcdn.cn/1.png" text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。" />
+<custom-Swiper imgUrls="{{carouselImgUrls}}"></custom-Swiper>
 <van-tabbar active="{{ active }}" active-color="red" inactive-color="#000" bind:change="onChange">
   <block wx:for="{{tabber}}" wx:key="icon">
     <van-tabbar-item icon="{{item.icon}}">{{item.title}}</van-tabbar-item>
