@@ -1,0 +1,10 @@
+<view class="show">
+  <view class="home_title" style="padding:{{titlePadding}}">
+    <text style="font-size:{{titleSize}};{{isBoldTitle ? 'font-weight:bold' : ''}}">{{title}}</text>
+    <navigator class="photos_href" wx:if="{{isNavigator}}" url="{{path}}" hover-class="true" open-type="navigate">
+      查看全部
+      <view class="ui_icon  single-chevron-right" />
+    </navigator>
+  </view>
+  <slot></slot>
+</view>

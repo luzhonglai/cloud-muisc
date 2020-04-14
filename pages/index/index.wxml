@@ -1,8 +1,59 @@
-<!-- index.wxml -->
-<van-notice-bar left-icon="https://img.yzcdn.cn/1.png" text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。" />
-<custom-Swiper imgUrls="{{carouselImgUrls}}"></custom-Swiper>
+<!-- 轮播图 -->
+<custom-Swiper imgUrls="{{banners}}"></custom-Swiper>
+<!--  -->
+
+<!-- list-icon -->
+<van-grid gutter="{{ 10 }}" border="{{false}}" custom-class="custom-class" >
+  <block wx:for="{{listIcon}}">
+    <van-grid-item icon-class="icon-class" url="{{item.link}}" icon="{{item.icon}}" info="{{1}}" text="{{item.title}}" />
+  </block>
+</van-grid>
+<!--  -->
+
+<!-- 主题玩法 -->
+<title-box class="title-box" title="最新音乐" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
+  <view class="newsong">
+    <view wx:for="{{newsong}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
+      <image src='{{item.song.album.picUrl}}' lazy-load="{{true}}" class="songsheet_container_image"></image>
+      <text class='songsheet_container_text newsong_songname'>{{item.name}}</text>
+      <text class='newsong_artists'>{{item.song.artists[0].name}}</text>
+    </view>
+  </view>
+</title-box>
+
+<title-box class="title-box" title="最新专辑" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
+  <view class="newsong">
+    <view wx:for="{{albums}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
+      <image src='{{item.picUrl}}' class="songsheet_container_image"></image>
+      <text class='songsheet_container_text newsong_songname'>{{item.name}}</text>
+    </view>
+  </view>
+</title-box>
+
+<title-box class="title-box" title="精选歌单" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
+  <view class="newsong">
+    <view wx:for="{{songsheet}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
+      <image src='{{item.coverImgUrl}}' class="songsheet_container_image"></image>
+      <text class='songsheet_container_text newsong_songname'>{{item.name}}</text>
+    </view>
+  </view>
+</title-box>
+
+<title-box class="title-box" title="精选电台" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
+  <view class="newsong">
+    <view wx:for="{{djRadios}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
+      <image src='{{item.picUrl}}' class="songsheet_container_image"></image>
+      <text class='songsheet_container_text newsong_songname'>{{item.name}}</text>
+    </view>
+  </view>
+</title-box>
+<!--  -->
+
+
+<!-- tabber-link -->
 <van-tabbar active="{{ active }}" active-color="red" inactive-color="#000" bind:change="onChange">
   <block wx:for="{{tabber}}" wx:key="icon">
     <van-tabbar-item icon="{{item.icon}}">{{item.title}}</van-tabbar-item>
   </block>
 </van-tabbar>
+<!--  -->

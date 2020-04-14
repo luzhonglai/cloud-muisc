@@ -9,9 +9,9 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#008B8B",
+    "navigationBarBackgroundColor": "#C62F2F",
     "navigationBarTitleText": "dome",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   
   "style": "v2",

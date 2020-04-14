@@ -1,25 +1,10 @@
-//index.js
-//获取应用实例
 const app = getApp();
-import axios from "../../utils/wxApl";
-
+const API = require("../../Apl/apl");
 Page({
-  options: {
-    name: 222,
-  },
   data: {
-    carouselImgUrls: [
-      "https://wx1.sinaimg.cn/mw690/006cV2kkly1g90322akslj30on1hcjvf.jpg",
-      "https://wx2.sinaimg.cn/mw690/006cV2kkly1g9032310y9j30on1hcdkw.jpg",
-      "https://wx3.sinaimg.cn/mw690/006cV2kkly1g90323z18oj30on1hc77z.jpg",
-      "https://wx1.sinaimg.cn/mw690/006cV2kkly1g90324d2mrj30on1hcwic.jpg",
-      "https://wx3.sinaimg.cn/mw690/006cV2kkly1g903258itpj30on1hctby.jpg",
-    ],
+    banners: [],
     hasUserInfo: false,
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
-    list: [],
-    itemH: Number,
-    showkelong: true,
     active: 0,
     tabber: [
       {
@@ -27,28 +12,59 @@ Page({
         icon: "home-o",
       },
       {
-        title: "分类",
+        title: "热门音乐",
         icon: "search",
       },
       {
-        title: "推荐",
+        title: "我的",
         icon: "friends-o",
       },
-      {
-        title: "我的",
-        icon: "setting-o",
-      },
+    ],
+    listIcon: [
+      { title: "推荐MV", icon: "/images/MV.png", link: "/pages/mv" },
+      { title: "歌手榜", icon: "/images/songer.png", link: "/pages/songer" },
+      { title: "歌单", icon: "/images/songList.png", link: "/pages/songlist" },
+      { title: "榜单排行", icon: "/images/rank.png", link: "/pages/rank" },
     ],
   },
-  async onLoad() {
+
+  onLoad() {
     this.setBarTitle();
-    const data = await axios.post({
-      data: {
-        types: "playlist",
-        id: 2884035,
-      },
-    });
-    this.setData({});
+    this.initPages();
+  },
+
+  async initPages() {
+    Promise.all([
+      API.getBanner({ type: 2 }),
+      API.getsongsheet({
+        order: "hot",
+      }),
+      API.getNewSong({}),
+      API.getNewEst({}),
+      API.getDjRadios({}),
+    ]).then(
+      ([
+        brannersResp,
+        songsheetResp,
+        newsongResp,
+        newLstResp,
+        djRadiosResp,
+      ]) => {
+        const bannersData = brannersResp.data.banners;
+        const playlists = songsheetResp.data.playlists.slice(0, 6);
+        const result = newsongResp.data.result.slice(0, 6);
+        const albums = newLstResp.data.albums.slice(0, 6);
+        const djRadios = djRadiosResp.data.djRadios.slice(0, 6);
+        const banners = bannersData.map((item) => item.imageUrl);
+        this.setData({
+          banners,
+          newsong: result,
+          songsheet: playlists,
+          djRadios: djRadios,
+          albums,
+        });
+      }
+    );
   },
   setBarTitle(i) {
     const title = this.data.tabber[i || 0].title;

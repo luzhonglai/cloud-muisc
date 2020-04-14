@@ -1,0 +1,25 @@
+.show {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.home_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home_title text {
+  flex: 1;
+  font-size: 44rpx;
+  color: #000;
+}
+
+.photos_href {
+  display: flex;
+  font-size: 32rpx;
+  color: #fff;
+  align-items: center;
+}

@@ -1,4 +1,4 @@
-const host = "http://www.muicc.cn/api.php"; // 接口域名
+const host = "http://neteasecloudmusicapi.zhaoboy.com"; // 接口域名
 
 const wxPromise = (request) => (obj = {}) =>
   new Promise((resolve, reject) => {
@@ -10,7 +10,6 @@ const wxPromise = (request) => (obj = {}) =>
     };
     request(obj);
   });
-
 // 重构配置request options 参数
 const Request = (options) => {
   const url = options.url || "";
@@ -42,7 +41,11 @@ const axios = {
   },
 };
 
-// wx内置方法支持 Promise方法then回调;
+const request = (url, data) => {
+  const options = { url, data };
+  return Request(options);
+};
+// wx内置方法支持 支持promise
 Object.keys(wx).forEach((key) => {
   if (!(key in axios)) {
     Object.defineProperty(axios, key, {
@@ -51,4 +54,4 @@ Object.keys(wx).forEach((key) => {
   }
 });
 
-export default axios;
+export default request;
