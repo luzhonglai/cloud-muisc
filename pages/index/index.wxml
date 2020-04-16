@@ -49,7 +49,6 @@
 </title-box>
 <!--  -->
 
-
 <!-- tabber-link -->
 <van-tabbar active="{{ active }}" active-color="red" inactive-color="#000" bind:change="onChange">
   <block wx:for="{{tabber}}" wx:key="icon">

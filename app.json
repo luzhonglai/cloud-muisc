@@ -1,8 +1,5 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
+  "pages": ["pages/index/index", "pages/logs/logs"],
   "usingComponents": {
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index"
@@ -13,7 +10,6 @@
     "navigationBarTitleText": "dome",
     "navigationBarTextStyle": "white"
   },
-  
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

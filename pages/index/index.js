@@ -3,8 +3,6 @@ const API = require("../../Apl/apl");
 Page({
   data: {
     banners: [],
-    hasUserInfo: false,
-    canIUse: wx.canIUse("button.open-type.getUserInfo"),
     active: 0,
     tabber: [
       {

@@ -10,6 +10,6 @@
 - catchtouchend
 - wx.createSelectorQuery 
 
-<img src="ceshi.jpg" width="320">
+<img src="/images/ceshi.jpg" width="320">
 
-<img src="ceshi1.png" width="320">
+<img src="/images/ceshi1.png" width="320">
