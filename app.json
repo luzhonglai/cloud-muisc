@@ -1,14 +1,21 @@
 {
-  "pages": ["pages/index/index", "pages/logs/logs"],
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
   "usingComponents": {
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index"
   },
   "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#C62F2F",
-    "navigationBarTitleText": "dome",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#DC4238",
+    "navigationBarTitleText": "云音乐",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#C62F2F",
+    "backgroundTextStyle": "light",
+    "onReachBottomDistance": 50,
+    "enablePullDownRefresh": true,
+    "pageOrientation": "auto"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

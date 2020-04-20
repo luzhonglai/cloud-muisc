@@ -18,16 +18,10 @@ Page({
         icon: "friends-o",
       },
     ],
-    listIcon: [
-      { title: "推荐MV", icon: "/images/MV.png", link: "/pages/mv" },
-      { title: "歌手榜", icon: "/images/songer.png", link: "/pages/songer" },
-      { title: "歌单", icon: "/images/songList.png", link: "/pages/songlist" },
-      { title: "榜单排行", icon: "/images/rank.png", link: "/pages/rank" },
-    ],
   },
 
   onLoad() {
-    this.setBarTitle();
+    this.initPageConfig();
     this.initPages();
   },
 
@@ -64,11 +58,14 @@ Page({
       }
     );
   },
-  setBarTitle(i) {
+  async initPageConfig(i) {
+    const menuRect = wx.getMenuButtonBoundingClientRect();
+    console.log(menuRect);
     const title = this.data.tabber[i || 0].title;
     wx.setNavigationBarTitle({
       title,
     });
+    this.setData({navH:app.globalData.navHeight})
   },
   onChange(event) {
     this.setBarTitle(event.detail);
