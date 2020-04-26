@@ -2,30 +2,22 @@ const app = getApp();
 const API = require("../../Apl/apl");
 Page({
   data: {
+    loading: false,
+    color: "#000",
+    background: "#fff",
+    show: true,
+    animated: false,
     banners: [],
-    active: 0,
-    tabber: [
-      {
-        title: "首页",
-        icon: "home-o",
-      },
-      {
-        title: "热门音乐",
-        icon: "search",
-      },
-      {
-        title: "我的",
-        icon: "friends-o",
-      },
-    ],
   },
 
   onLoad() {
-    this.initPageConfig();
     this.initPages();
   },
-
   async initPages() {
+    wx.showLoading({
+      title: "加载中",
+      mask: true,
+    });
     Promise.all([
       API.getBanner({ type: 2 }),
       API.getsongsheet({
@@ -42,11 +34,11 @@ Page({
         newLstResp,
         djRadiosResp,
       ]) => {
-        const bannersData = brannersResp.data.banners;
-        const playlists = songsheetResp.data.playlists.slice(0, 6);
-        const result = newsongResp.data.result.slice(0, 6);
-        const albums = newLstResp.data.albums.slice(0, 6);
-        const djRadios = djRadiosResp.data.djRadios.slice(0, 6);
+        const bannersData = brannersResp.banners;
+        const playlists = songsheetResp.playlists.slice(0, 6);
+        const result = newsongResp.result.slice(0, 6);
+        const albums = newLstResp.albums.slice(0, 6);
+        const djRadios = djRadiosResp.djRadios.slice(0, 6);
         const banners = bannersData.map((item) => item.imageUrl);
         this.setData({
           banners,
@@ -55,22 +47,15 @@ Page({
           djRadios: djRadios,
           albums,
         });
+        wx.hideLoading();
       }
     );
   },
-  async initPageConfig(i) {
-    const menuRect = wx.getMenuButtonBoundingClientRect();
-    console.log(menuRect);
-    const title = this.data.tabber[i || 0].title;
-    wx.setNavigationBarTitle({
-      title,
-    });
-    this.setData({navH:app.globalData.navHeight})
-  },
-  onChange(event) {
-    this.setBarTitle(event.detail);
-    this.setData({
-      active: event.detail,
+
+  // 搜索页面
+  onSearchPage() {
+    wx.navigateTo({
+      url: "/pages/search/index",
     });
   },
 });

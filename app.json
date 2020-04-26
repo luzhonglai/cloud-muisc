@@ -1,11 +1,13 @@
 {
+  "reLaunch": "pages/search/index",
   "pages": [
     "pages/index/index",
+    "pages/search/index",
     "pages/logs/logs"
   ],
+  
   "usingComponents": {
-    "van-tabbar": "@vant/weapp/tabbar/index",
-    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+    "navBar": "navBar/navBar"
   },
   "window": {
     "navigationBarBackgroundColor": "#DC4238",

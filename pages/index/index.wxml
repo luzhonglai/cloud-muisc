@@ -1,10 +1,9 @@
 <!-- 自定义头部 -->
-<navbar-new ></navbar-new>
-
+<navBar ext-class="nav-bar" bindsearch="onSearchPage" searchText="请输入歌手或歌曲名" color="#fff" searchColor="#DE655C" searchBar="{{true}}" background='#DC4238'></navBar>
+<!--  -->
 <!-- 轮播图 -->
 <custom-Swiper imgUrls="{{banners}}"></custom-Swiper>
 <!--  -->
-
 <!-- list-icon -->
 <van-grid gutter="{{ 10 }}" border="{{false}}" custom-class="custom-class">
   <block wx:for="{{listIcon}}">
@@ -12,7 +11,6 @@
   </block>
 </van-grid>
 <!--  -->
-
 <!-- 主题玩法 -->
 <title-box class="title-box" title="最新音乐" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
   <view class="newsong">
@@ -23,7 +21,6 @@
     </view>
   </view>
 </title-box>
-
 <title-box class="title-box" title="最新专辑" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
   <view class="newsong">
     <view wx:for="{{albums}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
@@ -32,7 +29,6 @@
     </view>
   </view>
 </title-box>
-
 <title-box class="title-box" title="精选歌单" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
   <view class="newsong">
     <view wx:for="{{songsheet}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>
@@ -41,7 +37,6 @@
     </view>
   </view>
 </title-box>
-
 <title-box class="title-box" title="精选电台" isBoldTitle titleSize='30rpx' titlePadding="0 30rpx">
   <view class="newsong">
     <view wx:for="{{djRadios}}" wx:key="" class='songsheet_item_box' data-id="{{item.id}}" bindtap='handlePlayAudio'>

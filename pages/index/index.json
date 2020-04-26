@@ -5,7 +5,7 @@
     "custom-Swiper": "customSwiper/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "title-box":"title_box/index",
-    "navbar-new":"navbarNew/index"
+    "title-box":"title_box/index"
+
   }
 }

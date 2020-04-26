@@ -12,7 +12,7 @@
     current="{{0}}">
     <block wx:for="{{imgUrls}}" wx:index="{{index}}" wx:key="{{index}}">
         <swiper-item class="swiper-item ">
-            <image mode="aspectFill" src="{{item}}" class="slide-image {{currentIndex == index ? 'active' : 'common'}}" />
+            <image mode="aspectFill" lazy-load="{{true}}" src="{{item}}" class="slide-image {{currentIndex == index ? 'active' : 'common'}}" />
         </swiper-item>
     </block>
 </swiper>

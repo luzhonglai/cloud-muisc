@@ -2,14 +2,16 @@ const host = "http://neteasecloudmusicapi.zhaoboy.com"; // 接口域名
 
 const wxPromise = (request) => (obj = {}) =>
   new Promise((resolve, reject) => {
+    obj = obj || {},
     obj.success = (res) => {
-      resolve(res);
+      resolve(res.data);
     };
     obj.fail = (error) => {
       reject(error);
     };
     request(obj);
   });
+
 // 重构配置request options 参数
 const Request = (options) => {
   const url = options.url || "";
@@ -45,6 +47,7 @@ const request = (url, data) => {
   const options = { url, data };
   return Request(options);
 };
+
 // wx内置方法支持 支持promise
 Object.keys(wx).forEach((key) => {
   if (!(key in axios)) {
