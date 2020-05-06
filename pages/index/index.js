@@ -13,6 +13,7 @@ Page({
   onLoad() {
     this.initPages();
   },
+  
   async initPages() {
     wx.showLoading({
       title: "加载中",

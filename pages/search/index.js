@@ -26,6 +26,7 @@ Page({
       this.setData({
         hotsongs: result.hots,
       });
+      wx.hideLoading();
     } catch (error) {
       // no
     }
@@ -39,7 +40,7 @@ Page({
     });
     if (data.code === 200) {
       this.setData({
-        searchsuggest: res.result.allMatch,
+        searchsuggest: data.result.allMatch,
       });
     }
   },
@@ -53,9 +54,8 @@ Page({
 
   //实现取消功能，停止搜索，返回首页
   cancel: function () {
-    wx.switchTab({
-      url: "/pages/index/index",
-    });
+    const url = "/pages/index/index";
+    wx.switchTab({ url });
   },
 
   //获取input文本并且实时搜索,动态隐藏组件
@@ -103,7 +103,7 @@ Page({
 
   // input失去焦点函数
   routeSearchResPage: function (e) {
-    console.log(e.detail.value);
+    if (e.detail.value === "") return false;
     let history = wx.getStorageSync("history") || [];
     history.push(this.data.searchKey);
     wx.setStorageSync("history", history);
@@ -117,25 +117,26 @@ Page({
   },
 
   // 搜索结果
-  searchResult() {
+  async searchResult() {
     console.log(this.data.searchKey);
-    API.searchResult({
+    const data = await API.searchResult({
       keywords: this.data.searchKey,
       type: 1,
       limit: 100,
       offset: 2,
-    }).then((res) => {
-      if (res.code === 200) {
-        this.setData({
-          searchresult: res.result.songs,
-        });
-      }
     });
+    if (data.code === 200) {
+      this.setData({
+        searchresult: data.result.songs,
+      });
+    }
   },
 
   // 搜索完成点击确认
-  searchover: function () {
+  searchover: function (e) {
     let that = this;
+    const value = e.detail.value;
+    if (value === "") return false;
     that.setData({
       showsongresult: false,
     });
@@ -145,17 +146,14 @@ Page({
   handlePlayAudio: function (event) {
     //event 对象，自带，点击事件后触发，event有type,target，timeStamp，currentTarget属性
     const audioId = event.currentTarget.dataset.id; //获取到event里面的歌曲id赋值给audioId
-    wx.navigateTo({
-      //获取到id带着完整url后跳转到play页面
-      url: `../../play/play?id=${audioId}`,
-    });
+    const url = `/pages/play/index?id=${audioId}`;
+    //获取到id带着完整url后跳转到play页面
+    wx.navigateTo({ url });
   },
 
   // 点击热门搜索值或搜索历史，填入搜索框
   fill_value: function (e) {
     let that = this;
-    console.log(history);
-    // console.log(e.currentTarget.dataset.value)
     that.setData({
       searchKey: e.currentTarget.dataset.value, //点击吧=把值给searchKey,让他去搜索
       inputValue: e.currentTarget.dataset.value, //在输入框显示内容
