@@ -5,7 +5,7 @@
     "pages/index/index",
     "pages/logs/logs"
   ],
-  
+
   "usingComponents": {
     "navBar": "navBar/navBar"
   },
